@@ -13,8 +13,10 @@ import com.udayakumar.myapp.models.Product;
 
 public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopViewHolder> {
 
-    public ShopListAdapter() {
+    ShopInterface shopInterface;
+    public ShopListAdapter(ShopInterface shopInterface) {
         super(Product.itemCallback);
+        this.shopInterface=shopInterface;
     }
 
     protected ShopListAdapter(@NonNull AsyncDifferConfig<Product> config) {
@@ -26,6 +28,7 @@ public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopVi
     public ShopListAdapter.ShopViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         ProductItemBinding productItemBinding = ProductItemBinding.inflate(layoutInflater,parent,false);
+        productItemBinding.setShopinterface(shopInterface);
         return new ShopViewHolder(productItemBinding);
     }
 
@@ -39,10 +42,12 @@ public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopVi
 
     public class ShopViewHolder extends RecyclerView.ViewHolder{
 
+
         ProductItemBinding productItemBinding;
         public ShopViewHolder(@NonNull ProductItemBinding binding) {
             super(binding.getRoot());
             this.productItemBinding = binding;
+
         }
     }
 

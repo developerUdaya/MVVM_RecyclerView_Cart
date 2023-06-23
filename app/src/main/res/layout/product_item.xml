@@ -7,15 +7,18 @@
         <variable
             name="product"
             type="com.udayakumar.myapp.models.Product" />
+        
+        <variable
+            name="shopinterface"
+            type="com.udayakumar.myapp.adapters.ShopListAdapter.ShopInterface" />
 
     </data>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> shopinterface.onItemClick()}"
         >
 
         <com.google.android.material.card.MaterialCardView
